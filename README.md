@@ -11,6 +11,6 @@ Summary notes for various areas of Natural Language Processing.
 
 ## Natural Language Processing Overview
 
-# Similar research notes repositories
+## Similar research notes repositories
 
 - [hb-research](https://github.com/hb-research/notes/blob/master/)
