@@ -23,7 +23,7 @@ Summary notes for various areas of Natural Language Processing.
 
 - [hb-research](https://github.com/hb-research/notes/blob/master/)
 
-# Usage
+# Adding a new research area/folder
 
 To start noting about a new research area simply run the
 ```start_new_area.sh``` script with an obligatory argument of the **name of
