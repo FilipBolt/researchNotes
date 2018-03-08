@@ -1,0 +1,50 @@
+\documentclass[a4paper,10pt]{article}
+
+% preamble
+\usepackage[utf8]{inputenc} 
+\usepackage[english]{babel} 
+\usepackage{hyperref}
+
+\title{Information theory perspective of Deep Learning}
+\author{Filip Boltuzic}
+\date{2018 \\ March}
+
+\begin{document}
+
+\maketitle
+
+Understanding Neural networks via Information theory is done in
+\cite{Schwartz-Ziv2017}. They calculate the mutual information from
+a known distribution they attempt to sample (so they \textbf{do} know the
+mutual information). They show that in their toy model, which is a simple
+feedforward up-to 50 layered neural network, there exist two phases in
+training a neural network: \emph{empirical error minimization} (ERM) and
+\emph{representation compression}. They call the second phase the
+\emph{stochastic relaxation} phase and argue this phase is the inefficient
+part of the DNN training, since it seems to behave like a random/Wiener
+process and could be done much more efficiently using other, more simple,
+approaches. Strong conclusions from this paper are:
+
+\begin{itemize} 
+\item More than half of the training time in the neural
+network could be more efficiently spent (stochastic relaxation period)
+
+\item Adding hidden units speeds up the training time for good
+generalization
+
+\item Compression phase of a layer is shorter when it starts from
+a previously compressed layer (layers closer to the output are done
+"faster". 
+
+
+\end{itemize}
+
+\noindent More to come when the review process for a counter paper 
+\url{https://openreview.net/pdf?id=ry_WPG-A-}
+gets published
+
+\bibliographystyle{apalike} 
+\bibliography{information_theory}
+
+\end{document}
+
