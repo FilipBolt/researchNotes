@@ -9,17 +9,19 @@ Summary notes for various areas of Natural Language Processing.
 - [Overview of latest in Natural Language Processing](#natural-language-processing-overview)
 - [General Deep Learning](#general-deep-learning)
 - [Argumentation Mining](#argumentation-mining)
-- [Similar research notes repositories](#similar-research-notes-repositories)
 
 ## Natural Language Processing Overview
 
 ## General Deep Learning
 
+- [Information theory
+  perspective](general_deep_learning/information_theory.pdf)
+
 ## Argumentation Mining
 
 - [Argumentation mining overview](argumentation_mining/argumentation_mining.pdf)
 
-## Similar research notes repositories
+# Similar research notes repositories
 
 - [hb-research](https://github.com/hb-research/notes/blob/master/)
 
