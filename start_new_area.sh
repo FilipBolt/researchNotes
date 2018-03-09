@@ -14,4 +14,4 @@ echo $title
 sed -i s/title\{template\}/title\{$(title)\}/ $new_area.tex
 
 pdflatex $new_area.tex && bibtex $new_area && pdflatex $new_area.tex &&
-  pdflatex $new_area.tex && gnome-open $new_area.pdf
+  pdflatex $new_area.tex && evince $new_area.pdf

@@ -12,6 +12,9 @@ Summary notes for various areas of Natural Language Processing.
 
 ## Natural Language Processing Overview
 
+- [Natural language processing
+  general](natural_language_processing/natural_language_processing.pdf)
+
 ## General Deep Learning
 
 - [Information theory

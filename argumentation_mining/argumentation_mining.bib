@@ -108,43 +108,37 @@
 }
 
 @article{Ajjour2017,
-abstract = {The segmentation of an argumentative text into argument units and their non-argumentative counterparts is the first step in identifying the argumentative structure of the text. Despite its importance for argument mining, unit segmentation has been approached only sporadically so far. This paper studies the major parameters of unit segmentation systematically. We ex-plore the effectiveness of various features, when capturing words separately, along with their neighbors, or even along with the entire text. Each such context is reflected by one machine learning model that we evaluate within and across three domains of texts. Among the models, our new deep learning approach capturing the entire text turns out best within all domains, with an F-score of up to 88.54. While structural fea-tures generalize best across domains, the domain transfer remains hard, which points to major challenges of unit segmentation.},
-annote = {References to check
-- Eger 2017, Neural End-to-End Learning for Computational Argumentation Mining
+  abstract = {The segmentation of an argumentative text into argument units and their non-argumentative counterparts is the first step in identifying the argumentative structure of the text. Despite its importance for argument mining, unit segmentation has been approached only sporadically so far. This paper studies the major parameters of unit segmentation systematically. We ex-plore the effectiveness of various features, when capturing words separately, along with their neighbors, or even along with the entire text. Each such context is reflected by one machine learning model that we evaluate within and across three domains of texts. Among the models, our new deep learning approach capturing the entire text turns out best within all domains, with an F-score of up to 88.54. While structural fea-tures generalize best across domains, the domain transfer remains hard, which points to major challenges of unit segmentation.},
+  author = {Ajjour, Yamen and Chen, Wei-Fan and Kiesel, Johannes and Wachsmuth, Henning and Stein, Benno},
+  pages = {118--128},
+  title = {{Unit Segmentation of Argumentative Texts}},
+  url = {http://www.arguana.com/fileadmin/Informatik/arguana/paper/AjjourEtAl2017a{\_}ArgMining.pdf https://argmining2017.files.wordpress.com/2017/08/argmining2017-15.pdf},
+  year = {2017}
+}
 
-Research questions:
-- features for argumentation segmentation
-- best machine learning model for segmentation
-- generalization across domains for segmentation
 
-Three main methods: SVM, CRF and Bi-LSTM
+@article{Levy2017,
+  abstract = {Automatic claim detection is a fundamen-tal argument mining task that aims to au-tomatically mine claims regarding a topic of consideration. Previous works on min-ing argumentative content have assumed that a set of relevant documents is given in advance. Here, we present a first corpus– wide claim detection framework, that can be directly applied to massive corpora. Using simple and intuitive empirical ob-servations, we derive a claim sentence query by which we are able to directly re-trieve sentences in which the prior prob-ability to include topic-relevant claims is greatly enhanced. Next, we employ simple heuristics to rank the sentences, leading to an unsupervised corpus–wide claim de-tection system, with precision that outper-forms previously reported results on the task of claim detection given relevant doc-uments and labeled data.},
+  author = {Levy, Ran and Gretz, Shai and Sznajder, Benjamin and Hummel, Shay and Aharonov, Ranit and Slonim, Noam},
+  pages = {79--84},
+  title = {{Unsupervised corpus-wide claim detection}},
+  url = {https://argmining2017.files.wordpress.com/2017/08/argmining2017-10.pdf},
+  year = {2017}
+}
 
-Across domain is a problem, definition of argument units do not match across corpora (unfortunately)
+@inproceedings{lippi2015context,
+  title={Context-Independent Claim Detection for Argument Mining.},
+  author={Lippi, Marco and Torroni, Paolo},
+  booktitle={IJCAI},
+  volume={15},
+  pages={185--191},
+  year={2015}
+}
 
-Dataset
-Essays -- Argument Annotated Essays Corpus includes 402 persuasive essays from essayforum.com by students
-Web discourse - Habernal Toulmin annotated text
-
-Features
-Semantic features -- words (embeddings didn't work)
-Syntactic - POS tags
-Structural Features -- use Stanford parser for sentences, clauses, phrases
-Pragmatic features -- Penn discourse treebank
-
-Models
-- Reimplementation of CRF gets worse results (4{\%}) using structural, syntatic, lex-syn and prob feature sets using CRF-suite
-- SVM that doesn't have any context
-- linear chain-CRF with a 5-size window
-- LSTM with word embeddings as tokens + all other feature sets as a one-hot encoded vector
-LSTM is best displayed by figure 2, in total there is one for semantic features (embeddings), one for all others, and then one for the outputting labels to model inter-label dependency
-
-Comparison to previous work
-- randomly split the test set of the essay corpus and use t-test to compare F-scores across the subset},
-author = {Ajjour, Yamen and Chen, Wei-Fan and Kiesel, Johannes and Wachsmuth, Henning and Stein, Benno},
-file = {:home/filip/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Ajjour et al. - Unknown - Unit Segmentation of Argumentative Texts.pdf:pdf;:home/filip/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Ajjour et al. - 2017 - Unit Segmentation of Argumentative Texts.pdf:pdf},
-mendeley-groups = {Argumentation mining,ArgMining 4th workshop},
-pages = {118--128},
-title = {{Unit Segmentation of Argumentative Texts}},
-url = {http://www.arguana.com/fileadmin/Informatik/arguana/paper/AjjourEtAl2017a{\_}ArgMining.pdf https://argmining2017.files.wordpress.com/2017/08/argmining2017-15.pdf},
-year = {2017}
+@inproceedings{levy2014context,
+  title={Context dependent claim detection},
+  author={Levy, Ran and Bilu, Yonatan and Hershcovich, Daniel and Aharoni, Ehud and Slonim, Noam},
+  booktitle={Proceedings of COLING 2014, the 25th International Conference on Computational Linguistics: Technical Papers},
+  pages={1489--1500},
+  year={2014}
 }
