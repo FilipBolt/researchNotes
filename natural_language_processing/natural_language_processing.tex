@@ -1,0 +1,33 @@
+\documentclass[a4paper,10pt]{article}
+
+% preamble
+\usepackage[utf8]{inputenc} 
+\usepackage[english]{babel} 
+\usepackage{hyperref}
+
+\title{Natural Language Processing Overview}
+\author{Filip Boltuzic}
+\date{2018 \\ March}
+
+\begin{document}
+
+\maketitle
+
+\section{ConvNet for text}
+
+\cite{Zhang2015} employ a ConvNet for text. They solve the tasks of
+sentiment analysis, ontology classification and text
+categorization. 
+
+\section{Encoding characters for neural networks}
+
+\cite{Zhang2015} employ a ConvNet for text and use an alphabet of 
+characters of size m ($m=70$), after which they one-hot encode chars. 
+Chars not in the alphabet are zero-encoded. Characters are quantized 
+in backward order.
+
+\bibliographystyle{apalike}
+\bibliography{natural_language_processing}
+
+\end{document}
+
