@@ -26,6 +26,11 @@ characters of size m ($m=70$), after which they one-hot encode chars.
 Chars not in the alphabet are zero-encoded. Characters are quantized 
 in backward order.
 
+\section{Question answering}
+
+\cite{Xiong2016} create a Dynamic Coattention Network where they encode 
+the question and answer using LSTMs, apply a coattention between the results, 
+
 \bibliographystyle{apalike}
 \bibliography{natural_language_processing}
 
