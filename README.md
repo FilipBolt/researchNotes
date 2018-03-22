@@ -20,7 +20,7 @@ Summary notes for various areas of Natural Language Processing.
 - [Information theory
   perspective](general_deep_learning/information_theory.pdf)
 
-## Argumentation Mining
+# Argumentation Mining
 
 - [Argumentation mining overview](argumentation_mining/argumentation_mining.pdf)
 

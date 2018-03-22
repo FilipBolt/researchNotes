@@ -13,10 +13,12 @@
 
 \maketitle
 
-\section{Definiton of Argumentation Mining}
+\tableofcontents
+
+\section{Definition of Argumentation Mining}
 
 Argument(ation) Mining is the automatic identification of the argumentative
-structure contained withing in a piece of language \cite{Lawrence2017}.
+structure contained withing in a piece of language~\cite{Lawrence2017}.
 
 Argument mining is automatic extraction of arguments from natural text
 \cite{Aker2017}.
@@ -24,26 +26,27 @@ Argument mining is automatic extraction of arguments from natural text
 \section{Tasks of Argumentation Mining}
 
 \begin{enumerate}
-  \item Identifying argumentative segments in text \cite{Ajjour2017, stab2017argumentative}
+  \item Identifying argumentative segments in text~\cite{Ajjour2017, stab2017argumentative}
 
-  \item Clustering recurring arguments \cite{boltuvzic2015identifying,
+  \item Clustering recurring arguments~\cite{boltuvzic2015identifying,
    misra2017using} 
    
-  \item Recognizing argument schemes \cite{feng2011classifying}. 
+  \item Recognizing argument schemes~\cite{feng2011classifying}. 
 
-  \item Prediction of structure (connecting premises to claims) \cite{Aker2017,
+  \item Prediction of structure (connecting premises to claims)~\cite{Aker2017,
    Lawrence2017}
 
- \item Claim detection (can be similar to argument segments in text) \cite{Levy2017}. 
-   Can be context dependent \cite{levy2014context} or independent \cite{lippi2015context}
+ \item Claim detection (can be similar to argument segments in text)~\cite{Levy2017}. 
+   Can be context dependent~\cite{levy2014context} or independent~\cite{lippi2015context}
    
 \end{enumerate}
 
 \subsection{Identifying argumentative segments in text}
+\label{subsec:argseg}
 
-Unit segmentation consists in the splitting of a text into its
-argumentative segments (ADU) and their non-argumentative counterparts.
-\cite{Ajjour2017} 
+\noindent Unit segmentation consists in the splitting of a text into its
+argumentative segments (ADU) and their non-argumentative counterparts 
+\cite{Ajjour2017}.
 
 \cite{persing2016end} rely on handcrafted features based on the parse tree
 of a sentence to identify segments. 
@@ -51,21 +54,35 @@ of a sentence to identify segments.
 features to classify the argumentativeness of each single word based on
 its surrounding words. 
 \cite{eger2017neural} employ a deep learning architecture using different
-features based on the entire essagt
+features based on the entire essay.
 \cite{al2016news} have a rule-based where they suggest where the arguments
 should be split before the actual argument annotation (annotators could
 merge arguments back).
 \cite{Aker2017} determine if a sentence is a claim,
 premise or none. They work on a sentence boundary. 
+\cite{Ferrara2017} model their approach as \emph{attraction to topics}. 
+In an unsupervised setting, they claim an argumentative unit 
+is something that is highly related to one topic only working on a 
+sentence level. 
+
+\subsection{Clustering recurring arguments}
 
 \subsection{Prediction of structure}
 
 \cite{Lawrence2017} have annotated debates on ``Moral Maze'' and created
-argument diagrams via AIFDB. They aim to recognize the support relation
+argument diagrams via AIFDB\@. They aim to recognize the support relation
 from text (inference or non-inference).
-\cite{Aker2017} use claim-premise pairs and go full Carteisan on them,
+\cite{Aker2017} use claim-premise pairs and go full Cartesian on them,
 making negative examples for those who aren't linked in the gold set. They
-work on the \cite{stab2017parsing, aharoni2014benchmark} datasets.
+work on the~\cite{stab2017parsing, aharoni2014benchmark} datasets.
+\cite{Hou2017} predict support/attack relations and stance classification at the same
+time (jointly). They assume arguments that attack each other 
+have opposing stances. 
+
+\subsection{Claim detection}
+
+\cite{Ferrara2017} use topic modeling to predict which sentence is a 
+claim, major claim or premise. 
 
 \section{Unsupervised approaches to Argumentation Mining}
 
@@ -83,17 +100,19 @@ other filtering. They make their own premise-conclusion pairs by searching
 the web for the discourse marker and then use LDA to predict
 support/non-support relations.
 \cite{Levy2017} do unsupervised claim detection where they extract
-sentences with 'that' words in them and use 
+sentences with ``that'' words in them and use 
 them for claim detection. They acquire the sentences 
 from Wikipedia (which is kind of distant supervision).
 They evaluate their work through crowdsourced data labels. 
+\cite{Ferrara2017} try to identify argumentative relations (see
+Subsection~\ref{subsec:arg}) using unsupervised topic modeling. 
 
 \section{Predicting support relations}
 
 Predicting support relations is similar to textual entailment, but
 involves more contextual knowledge and common-sense reasoning since the
 semantic distance is greater. Also, it is not strictly a logical relation
-and (with a well-defined hypothesis--text relation), but (usually) there
+and (with a well-defined hypothesis-text relation), but (usually) there
 is a direction defined.
 \cite{Lawrence2017} constructs a corpus using web-search and a gold set
 then does supervised classification whether a sentence supports (infers)
