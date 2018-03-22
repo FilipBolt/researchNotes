@@ -13,11 +13,6 @@
 
 \maketitle
 
-\section{ConvNet for text}
-
-\cite{Zhang2015} employ a ConvNet for text. They solve the tasks of
-sentiment analysis, ontology classification and text
-categorization. 
 
 \section{Encoding characters for neural networks}
 
@@ -30,6 +25,22 @@ in backward order.
 
 \cite{Xiong2016} create a Dynamic Coattention Network where they encode 
 the question and answer using LSTMs, apply a coattention between the results, 
+
+\section{Natural Language Inference}
+
+Natural Language Inference is a methodology for solving \emph{Textual entailment}.
+
+\noindent \cite{Chen2017} says the typical model contains of four steps:
+\begin{enumerate}
+  \item encoding input sentences, 
+  \item performing co-attention across premise and hypothesis
+  \item collecting and computing local inference
+  \item performing sentence level inference judgement by composing local inference
+\end{enumerate}
+They do the same, but add WordNet as a knowledge resource to mark if something is in a
+relation (synonym, hyponym...) with another word (text-hypothesis pairs are checked). 
+Knowledge is applied in multiple stages (last three)
+
 
 \bibliographystyle{apalike}
 \bibliography{natural_language_processing}
