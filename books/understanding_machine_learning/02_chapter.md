@@ -128,3 +128,25 @@ L_S(A) = 0
 $$
 
 ### Part 2
+
+
+## RECAP QUESTIONS
+
+1. We are trying to learn the discriminative function which maps data to labels. 
+We assume there exists a perfect mapping from data to labels. 
+What would a generative approach look like in this case?
+Is this entire book merely on discriminative approaches?
+
+2. Which inductive bias do we have when relying on ERM algorithms?
+More inductive biases will be studied later (Occam's razor, independence in Naive Bayes)
+
+Tom Mitchel's definition of inductive bias:
+an inductive bias of a learner is the set of additional assumptions sufficient
+to justify its inductive inferences as deductive inferences.
+
+3. Look at the formula in Corollary 2.3. How 
+come it does not depend at all on the domain space size?
+
+Answer: it's all actually the delta parameter. 
+Subquestion: what is the dependence between the delta parameter and
+accuracy parameter? Who depends on whom?

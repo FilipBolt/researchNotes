@@ -37,7 +37,7 @@ $$ m_{\mathcal{H}}(\epsilon, \delta) \leq \left \lceil
 \right \rceil
 $$
 
-$m_\mathbb{H}$ is the minimal number of examples (complexity).
+$m_\mathcal{H}$ is the minimal number of examples (complexity).
 
 # 3.2. A More General Learning Model
 
@@ -130,3 +130,8 @@ the expected value of that random variable.
 on a hypothesis space $\mathcal{H}'$ ($\mathcal{H}$ is a superset of it). 
 If we're searching through $\mathcal{H}$ that is called representation 
 independent learning. 
+
+
+## RECAP QUESTIONS
+
+

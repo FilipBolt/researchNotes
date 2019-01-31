@@ -13,7 +13,7 @@ $$
 If S is $\frac{\epsilon}{2}$ representative, the ERM learning rule
 is possible to find $h_S$ such that:
 
-$$
+$
 L_D(h_S) \leq min_{h \in \mathcal{H}} L_D(h) + \epsilon
 $$
 
