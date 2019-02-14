@@ -1,0 +1,8 @@
+boltuzic2014back
+
+This is another thing I should be proud of, but just 
+testing out vim-notes. 
+
+Making a reference to other notes 
+just requires typing out the note name. 
+For example: boltuzic2015identifying

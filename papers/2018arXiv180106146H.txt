@@ -1,0 +1,49 @@
+2018arXiv180106146H
+
+Paper by Jeremy Howard and Sebastian Ruder
+
+They build a universal transfer learning model with fine tuning, 
+train it on six text classification tasks and improve over existing 
+state of the arts of transfer learning and some state of the arts in 
+text classification itself. Additionally, they show their ULMFiT model
+can match training from scratch with just 100 labelled examples. 
+
+Contributions of the paper are mostly on the newly proposed model ULMFiT,
+more noteworthy:
+• simple 3 layer architecture (no attention, short-cut connections)
+• three step process of learning a task:
+ • (1) general-domain LM pretraining 
+ • (2) target task LM discriminative fine-tuning
+    ◦ different learning rates per layer (last layer highest)
+    ◦ learning rates change with iteration time by a slanted triangular formula (see Fig 2)
+ • (3) target task classfier fine-tunning
+    ◦ two linear blocks learn from scratch
+    ◦ mean/max concat pooling of hidden layers with maxing out the GPU memory
+    ◦ gradual unfreezing from last layer to first (similar to chain-thaw, but with a growing set)
+• back-propagation through time where the document is divided into batches
+• can work with both single and bi—directional models
+• ablation studies on LM quality/fine-tuning/classifier fine-tunning
+
+Questions raised:
+
+• is the hypercolumn-based Mccann paper really comparable, since it does deal 
+with nontrivial text classification, but textual entailment?
+• why are the tables reported in error rate? (inflating numbers a bit?)
+• how and why are learning rates different across layers?
+• is pooling of hidden states similar to maxing cross-connections in LSTMs?
+• why are embedding dropout rates all different :-(
+• comparing against SOA in text classification everywhere instead of transfer NLP 
+• how does unsupervised ULMFiT work?
+• how to adapt this for more complex tasks?
+
+Papers to read after this one:
+
+• How Transferable are features in deep neural networks?; Yosinski et al 2014 (nips)
+• Learned in Translation: Contextualized Word Vectors; McCann et al. 2017 (nips)
+• Regularizing and Optimizing LSTM Language Models; Stephen Merity et. al 2017 (AWS-LSTM)
+- Supervised learning of universal sentence representations from natural
+language inference data Connau 2017
+• Arnold et el 2017 and Pan and Yang 2010 transfer learning
+• transductive SVM
+• colorless green hierarchical network Baroni 2018
+• backpropagation through time

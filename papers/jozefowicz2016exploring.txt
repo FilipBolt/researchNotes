@@ -1,0 +1,110 @@
+jozefowicz2016exploring
+
+Paper by Rafal Jozefowicz, Oriol Vinyals, 
+Mike Schuster, Noam Shazeer and Yonghui Wu (Google Brain)
+
+They train several language models using the One Billion 
+Word Benchmark. They use Character-level CNNs, standard LSTMs,
+and their combinations. They manage to significantly lower the
+perplexity of SOA models, while also reducing the number of
+parameters. 
+
+Language models model probability over sequences of tokens. 
+Good language models should assign low probabilities to 
+sentences that rarely appear, but are grammatically correct. 
+Two basic approaches are parametric (NN) vs. non-parametric
+models (count based). Usually, count based models require
+more data than parametric ones. 
+
+They focus on large-scale datasets, since they believe
+smaller ones (PennTree Bank) 
+are more prone to overfitting, and large-scale
+ones are easy enough to find these days. 
+
+They study the use of character embeddings, CNNs, LSTMs. 
+They also play around with softmax definitions over 
+large vocabularies and find ways of approximating it. 
+Some approches to calculating the normalization factor in softmax
+are importance sampling, Noise Contrastive Estimation (NCE),
+self normalizing parition functions or 
+Hierarchical Softmax. The authors find that 
+NCE and importance sampling are quite similar. 
+
+They model their approximation of softmax as follows.
+Suppouse there is a binary task to decide if 
+a word comes from data or noise. They get a sample
+which contains one true and _k_ noisy samples. 
+Then, they maximize likelyhood of finding Y=1 (true data point)
+and generalize to Y=k. Then they approximate
+Y=k probabaility with softmax over the difference
+between the embedding and noise. 
+
+In their CNN softmax idea, they replace the
+word embedding with the result of a CNN going over
+characters, effectiely reducing the size (and parameter number)
+of the |V| x |h| matrix. But, since the functions
+mapped very similarly from words that are spelled
+similarly, but with different meanings, a factor of
+correction was added, which projects back to the LSTM state.  
+To get predictions, a combination of character and word level
+models is used. They use an LSTM to predict the output word, 
+but one character at a time, which they replace the standard
+word-level softmax with. 
+
+They model using the One billion word dataset, 
+use perplexity (on the hold out set) as an evaluation measure.
+They use a LSTM with a projection layer and backpropagation
+through time (again, why)
+
+From the experiments, they learn that 
+1) size matters, meaning that embedding size
+and projection size helped, but also made the
+number of parameters increase. 2) RNNs work
+worse than LSTMs. 3) Dropout is the best
+regularizer (the larger the model, the more
+dropout one should have), 4) importance 
+sampling is better than NCE in both speed
+and performance, 5) using character CNNs instead
+of word embeddings might be good
+for morphologically rich languages or informal text. 
+
+In the end, they take their best models, and
+ensemble them, getting additional improvements.
+They tried involving n-grams in them, but it
+didn't work. Finally, LMs might be better with
+languages with more rare words. 
+
+
+Questions raised:
+• 3.1. It's easy to show that the bayes probability 
+is a good approximation of the logistic function (how)
+- Why would optimizing a multiclass be better than a binary?
+- Shouldn't it be (k + 1) in their softmax formula?
+(this is sort-of confirmed in 4.4 matrices details)
+- 4.2. Why isn't there more padding for the word cat?
+- Why ensembling language models is not more of a thing?
+
+Papers to read after this one:
+• Hierarchical neural network generative models for movie dialogues
+Serban et. al 2015
+(because it trains language models that attain general knowledge)
+• Sequence to sequence learning with neural networks
+Sutskever et. al. 2014
+(seminal NIPS paper with ~ 5000 citations)
+• Long short-term memory recurrent neural network 
+architectures for large scale acoustic modeling
+Sak et. al 2014 
+(language model matrix operations and word-space projection)
+• Finding function in form: Compositional character 
+models for open vocabulary word representation
+Ling et. al 2015 
+(because they work with character embeddings, one of the first)
+• Training very deep networks
+Srivastava et. al 2015
+(they work with large networks, some tips and tricks, also highway networks)
+• A scalable hierarchical distributed language model
+Mnih and Hinton, 2009
+(nips paper, introduces hierarhcical softmax)
+- One billion word benchmark for measuring progress in statistical language modeling,
+Chelba et al. 2013
+(because I'm interested in how to track progress LM)

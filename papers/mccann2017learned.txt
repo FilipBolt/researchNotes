@@ -1,0 +1,55 @@
+mccann2017learned
+
+Paper by Bryan McCann, James Bradbury, Caiming Xiong, Richard Socher (salesforce)
+
+The main idea of the paper is to use the result of language modeling
+and apply it to various supervised NLP tasks.  The idea comes from
+Computer Vision, where multiple deep layers are pretrained on large
+supervised training sets such as ImageNet. 
+
+There are multiple setups with respect to using extra word
+information for a supervised model: - random initialization on
+input, then fine tuning via the task itself - using pretrained word
+vectors w or w/o fine-tuning on specific tasks - using pretrained
+skip-thought sentence vectors (Kiros et. al 2015) - using ML model
+outputs which has been pretrained on some other task (this is how
+pretraining language models are done usually as of this paper)
+
+The gist of the paper is to pretrain a language model on the machine
+translation task using a simple LSTM architecture (MT-LSTM), then
+use a Dynamic Coattention Network architecture to perform on SQUAD,
+but use biattentive network for 
+SNLI, SST, IMDB. The vectors of the MT-LSTM are appended to the
+vectors of the specific supervised task.  Next classification can be
+performed with biattentive classification network (BCN) => it's
+pretty nice that all the tasks will have almost the same
+architecture, this is undersold in this paper.  Some problems are
+single, some dual sentence => for single sentence they simply copy
+the sentence, perhaps because they have small tweaks for each
+supervised task (ReLU => tanh for QA, pooling type...)
+
+They introduce character embeddings at the end, which is a bit
+suprising, and don't really impress with results (to say the least).
+They compare against other way of pretraining vectors, and barely
+outperform character embeddings.  Next, they compare against other
+SOA models in different tasks, and are competitive all around, but
+don't really improve. Finally, they compare against Skip-gram
+vectors and show improvement with "smaller" vectors (4800 dimensions
+can be unstable)
+
+Their BCN architecture (see Figure 2):
+1. ReLU Network
+2. LSTM encoder
+3. Biattention across LSTMs
+4. Integration  of conditioning information 
+5. Aggregation of conditioning info by pooling (min, self-attentive,
+   max, mean)
+
+They train their ML-LSTM LM by decaying learning rate, with dropout
+of 0.2 everywhere and use 600 dimensional vectors, and have 3 setups
+which vary in dataset size.
+
+Papers to read after this one:
+- Goodfellow, maxout
+- Seo, Xiong 2017, biattention
+- Ioffe and Szegedy, batch-normalized

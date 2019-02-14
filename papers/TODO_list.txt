@@ -1,0 +1,54 @@
+TODO_list
+
+# I want to read:
+
+• Natural language processing papers
+• Argumentation mining papers
+• General Deep learning papers. 
+
+So far, I’ve mostly read Argumentation Mining papers,
+and I wish to broaden my views with NIPS General deep learning papers. 
+
+I have read the boltuzic2015identifying papers. 
+
+# Paper reading list
+
+- Supervised Learning of Universal Sentence Representations from Natural
+Language Inference Data
+(Mentioned in 2018arXiv180106146H)
+• Bojanowski 2017 et al. "Enriching word vectors with subword information"
+(Mentioned in 2018arXiv180205365P)
+• Belinkov et al. 2017 What do Neural Machine Translation Models Learn about Morphology?
+(Mentioned in 2018arXiv180205365P)
+• Neelakantan 2014, Efficient non-parametric estimation of multiple embeddings
+per word in vector space
+(Mentioned in 2018arXiv180205365P)
+• Melamud 2016, context2vec: Learning generic context embedding with bidirectional lstm
+(Mentioned in 2018arXiv180205365P)
+• Colorless green recurrent networks dream hierarchically, Baroni 2018
+(Mentioned in 2018arXiv180106146H)
+- Relational inductive biases, deep learning, and graph networks, 
+because I want an overview of graph networks done by Deepmind
+(Twitter -- arxiv)
+
+# Paper finished read list
+
+• How Transferable are features in deep neural networks? 
+Yosinski et. al 2014 (nips) ==> DONE
+(yosinski2014transferable)
+• Learned in Translation: Contextualized Word Vectors; McCann et al. 2017 (nips)
+(mccann2017learned) ==> DONE
+• Deep contextualized word representations 
+Peters et al. 2017 (2018arXiv180205365P) ==> DONE
+• Universal Language Model Fine-tuning for Text Classification
+Jeremy Howard and Sebastian Ruder, 2018 (2018arXiv180106146H) ==> DONE
+- Jozefowicz, Rafal, et al. "Exploring the limits of language modeling." arXiv
+preprint arXiv:1602.02410 (2016). ==> DONE
+(Mentioned in 2018arXiv180205365P)
+
+
+# General knowledge
+
+• Backpropagation through time
+• Transductive SVM
+• Transfer learning (Arnold et el 2017 and Pan and Yang 2010)

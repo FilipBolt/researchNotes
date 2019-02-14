@@ -1,0 +1,83 @@
+2018arXiv180205365P
+
+Deep contextualized word representations
+
+Paper by Matthew E. Peters et. al from AllenNLP
+
+Classic approach to neural language models is to
+1. compute a context-independent token representation 
+2. pass the token representation through layers of LSTMs and compute hidden states
+3. use the top layer to predict the next token
+
+This can be done in two directions (forward, backward). 
+Log likelyhood is then jointly maximized
+over both directions. Parameters are shared for the
+1. token represetation
+2. softmax layer
+
+ELMo — combines intermediate layer representations in the biLM. 
+ELMo collapses all LSTM hidden layers into a single vector, and then
+calculates a linear combination between different layers with two
+parameters: s_task as softmax normalized weights and gamma_task
+as a scale factor. Sometimes also layer normalization was performed. 
+
+ELMo can improve supervised architectures for a target NLP task. 
+1. biLM is run independently to train on words
+2. End task model learns a linear combination of representations
+
+Adding ELMo to a supervised model:
+1. Supervised model usually starts with a context-independent embedding
+layer x_k
+2. Concatenate ELMo with original x_k representation
+3. (Optional) Sometimes add ELMo to the output 
+4. Add dropout to ELMo and regularlize weights
+
+biLM architecture is equivalent to Jozefowicz, but with 
+halved the embedding and hidden layer dimensions. Final model uses
+2 biLSTM layers, with residual connections between. 
+Context insensitive part uses 2048 char n-gram convolutional filters
+with two highway layers and a linear projection of 
+a 512 representation, in total 3 representations of tokens (q2)
+Once pre-trained, biLM can be fine-tuned to a domain specific task,
+which leads to a significant decrease in perplexity (q3).
+
+ELMo is added in different ways for different tasks, but it shows
+to be pretty good across six different tasks. It compares to state
+of the art systems, as well as CoVe, the other domain adaptation 
+language model. 
+
+A series of analysis is then conducted. First, different weighting 
+schemes are tried out: last layer contextual representations (used so far), 
+linear combination of mperformedultiple layers, linear comb. + less regularization.
+The final combination works best (q5). 
+Next, the individual biLM layers are used to try and solve
+WSD and POS tagging, where they give competitive results, 
+second layer is better for WSD, first for POS tagging (q6). 
+Finally, efficiency tests are performed. Using ELMo
+shows to reduce training time consideraby (see figure 1). 
+Also, looking at the weight values, it can be visible that  similar 
+values are layer-ordered.
+
+Fine-tuning showed to help sometimes, which is in constrast to
+2018arXiv180106146H. 
+ 
+Questions
+1. Why concatenate at the output?
+2. How is there three representations of of characters (3.4)
+3. Where do they calculate the perplexity? 
+4. What are all those ensembled mentioned in the tasks?
+5. Are models with small regularization cheating? And what do their
+perplexities look like?
+6. Now, why not use the same tasks as before for layer probing?
+7. Epochs or dataset sizes? (5.3)
+
+References to check out:
+
+- Jozefowicz, Rafal, et al. "Exploring the limits of language modeling." arXiv preprint arXiv:1602.02410 (2016).
+• Bojanowski 2017 et al. "Enriching word vectors with subword information"
+• Belinkov et al. 2017 What do Neural Machine Translation Models Learn about Morphology?
+• Neelakantan 2014, Efficient non-parametric estimation of multiple embeddings per word in vector space
+• Melamud 2016, context2vec: Learning generic context embedding with bidirectional lstm
+
+Questions for authors
+1. What are ||w|| refer to?

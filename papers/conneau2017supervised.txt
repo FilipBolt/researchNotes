@@ -1,0 +1,47 @@
+conneau2017supervised
+
+Paper by Conneau et. al from Facebook AI Research
+
+Authors want to explore transfer learning for sentence embeddings. 
+They draw inspiration from computer vision and pretraining on ImageNet. 
+They want to explore two facets: 1) which dataset to use for pretraining
+2) what kind of architecture to use for pre-training. For 1) they opt for
+the NLI Stanford dataset. This is the first work to fully exploit
+the SNLI corpus to build good sentence encoders. 
+
+They model their sentence encoder to model a sentence at a time 
+(text and hypothesis separately). They split their work into a sentence 
+encoder which encodes u and v vectors which they then arithemtically
+process to do 3-class classification.
+
+Sentence encoder architectures. The models encode sentences using LSTM/GRU
+by recursively computing hidden word representations. BiGRU that concatenates
+both directions is also computed. BiLSTM is done the same way, combining hidden
+representations is explored (maximum/mean values across dimensions).
+Next, they make a self-attentive sentence encoder where 
+attention is defined as similarity between the keys and context vectors. 
+Hierarchical ConvNet concatenates different levels of representation abstractions.
+The authors convolve the sentence through 4 layers, ending up with a 
+max-pooled concatentation of each layer. They evaluate encoded sentences in
+12 different tasks. They even build a tool named SentEval 
+(https://github.com/facebookresearch/SentEval) to evaluate sentence
+embeddings. The best working models on NLI turn out
+HConvNet and BiLSTM-Max. 
+
+Here, we see pretraining is still not comparable to direct supervised
+learning (therefore fine-tuning is the way to go in terms of performance)
+except on a few tasks (but these are related similarity and entailment). 
+They outperform SkipThought with less data, but 
+more supervision (SkipThought has none).
+
+The morales are: 
+1) use specific tasks to get good pretraining done (vs. unsupervised)
+2) NLI is a good task to transfer learn from (more NLI data is better)
+
+Papers to read next: 
+- Learning distributed representations of sentences from unlabelled data,
+Hill et al. 2016
+- Learning natural language inference using bidirectional lstm model and inner-attention,
+Liu et al. 2016
+- Self-Adaptive Hierarchical Sentence Model, Zhao et al. 2015
+

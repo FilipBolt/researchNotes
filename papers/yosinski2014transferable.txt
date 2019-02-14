@@ -1,0 +1,53 @@
+yosinski2014transferable
+
+How transferable are features in deep neural networks?
+
+Paper by Jason Yosinski, Jeff Clune, Yoshua Bengio, Hod Lipson
+
+The main idea of the paper is to investigate the transfer learning
+of deep neural networks on similar tasks. The authors
+setup a series of experiments with a 
+seven layer convonlutional network trained on ImageNet
+where set up ablation tests across multiple dimensions:
+1) random init vs. tranfer learning init
+2) learning vs. freezing weights
+3) number of layers split
+4) splitting the dataset randomly vs. hierarchically
+
+The motivation for the paper is that Gabor filters and color blobs 
+usually tend to show up in the first layers of the trained convolutional 
+neural network. They look at results through acurracy on ImageNet
+with 1000 labels. 
+
+First experiment. Random A/B split of the dataset.
+Most interesting results show when pretraining a network on B, then
+freezing it's weights in the top N layers and fine-tuning on B, 
+there are performance drops for N=3, 4, 5, 6. This implies that
+a too high of cooadaptation has occured, such that the network could not
+relearn what it had before. Re-learning a small amount is, however, feasible. 
+When transfer learning, first two layers are completely transferable. 
+Suprising results are when training on A, then fine-tuning on B works
+better than only B. 
+
+Second experiment. Man-made vs. natural split of the dataset.
+Performance was simply worst in the man-made vs. natural split,
+compared to the random split. This is quite logical. 
+
+Third experiment. Random weights. Jarret et. al (2009) showed
+the combination of random convolutional filters, rectification, pooling
+and local normalization can work almost as well as learned features, 
+but on a smaller dataset. The authors get different results 
+here, disagreing with Jarret, since they conclude it's better to use even
+remote tasks vs. simply random starts. 
+
+Questions:
+- Are all experiments actually ablative? Aren't there mulitple moving parts
+in some setups?
+- Has anyone ever tried going from more specific to general? Re-learning
+general stuff? It must be harder, but shouldn't that be more useful?
+- How could one measure coadaptation? If so, could you regularlize on it?
+- In learning vs. non-learning, what's the rate of change?
+
+
+More plots available at
+https://github.com/yosinski/convnet_transfer/blob/master/plots/transfer_plots.ipynb
