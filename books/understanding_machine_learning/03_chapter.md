@@ -134,4 +134,17 @@ independent learning.
 
 ## RECAP QUESTIONS
 
+1. What is more general: agnostic PAC learning or PAC learning?
 
+$C$ is PAC learnable, $C \subset 2^{X}$ is agnostic PAC learnable
+
+Agnostic PAC learnable is a stronger condition, but both are actually 
+equivalent. How to prove:
+https://cs.stackexchange.com/questions/76451/is-it-true-that-pac-is-a-subset-of-agnostic-pac
+
+2. Why do loss functions always map to $\mathbb{R}_{+}$? 
+
+3. True risk function is by definition the expectation of 
+of the loss function over the domain. In practice, our loss
+function might not have to do anything with our evaluation. Why do we
+optimize for one loss function, but evaluate on something else?

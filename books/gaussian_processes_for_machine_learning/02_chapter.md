@@ -33,6 +33,12 @@ exp(-\frac{(y_i - x_{i}^T w)^2}{2 \sigma_{n}^{2}})
 p(y | X, w) \sim \mathcal{N} (X^Tw, \sigma^2)
 $$
 
+- TODO break down step 3 to 4, how to get 
+to norm?
+
+- $\Sigma_p$ is sigma prior
+- $\sigma_n$ is sigma noise
+
 We need a prior over the weights, and we will use 
 a Gaussian $w \sim \mathcal{N} (0, \Sigma_p)$
 
@@ -69,8 +75,6 @@ Look at figure 2.1 The intercept should be a little smaller than 0 and slope aro
 THe weights go from uniform to the ones in picture d).
 Likelihood shapes them a lot (much more than the prior).
 
-- TODO: what is c) exactly showing, since that can't be a distribution of y?
-
 ## 2.1.2 Projections of Inputs into Feature Space
 
 We can project an input space into another using some
@@ -84,5 +88,51 @@ Now, we wish to make predictions over the transformation of
 x. And then the predictive distribution becomes:
 
 $$
-p(f_* | x_*, X, y) = \mathcal{N} (\frac{1}{\sigma^2} \Phi(x_{*})^TA^{-1}Xy, x_{*}^TA^{-1}x_*)
+f_* | x_*, X, y = \mathcal{N} (\frac{1}{\sigma^2} \phi(x_{*})^TA^{-1}\Phi(X)y, \phi(x)_{*}^TA^{-1}\phi(x_*))
 $$
+
+To make predictions, it is required to invert matrix A, which might 
+be inconvinient in practice due to a large feature space, so the equation can be 
+rewritten as using $K$ and $\Sigma$. In this cse one needs to convert matrices 
+of sample size $n$ instead of feature space dimension $N$. Notice the occurence of the
+form $\phi(x)^T \Sigma_p \phi(x')$ appears often in eq (2.12). Thus, we define
+$k(x, x')$ of this form and name it covariance function or kernel. 
+The kernel is an inner product with respect to a covariance $\Sigma$. To further 
+simplify, $\Sigma_p$ can be decomposed as it is positively definite
+(every scalar obtained with inner product is strictly positive). 
+
+If an algorithm is defined in terms of inner products in input space, it 
+can be lifted in feature space by replacing inner products with $k(x,x')$, 
+which is called the *kernel trick*. 
+
+
+## 2.2 Function-space View
+
+Now, an alternative way of reaching identical results as the previous section, 
+but by considering inference in the function space. 
+We define a *Gaussian process* as a collection of random variables, 
+which have a join Gaussian distribution. The process is specified by
+its mean and covariance. The random variables represent the value of the function
+f(x) at point x. Often GPs are defined over time, but we do not make this a requirement, 
+but the input space is generalized to $\mathbb{R}^D$. 
+
+An example of a Gaussian process can come from linear models. 
+Linear models are defined as $f(x) = \phi(x)^T w$ with prior
+$w \sim \mathcal{N}(0, \Sigma_p)$. The mean is zero, and the covariance
+is $\phi(x)^T \Sigma_p \phi(x')$, thus $f(x)$ and $f(x')$ are
+jointly Gaussian. For the covariance function 
+we will use the squared exponential as the running example. 
+The covariance of the outputs is written as a function of the inputs. 
+We take that specific function, since it corresponds to the bayesian linear
+regression model with an infinite number of basis functions. 
+
+Now, we attempt to sample from the joint Gaussian of functions, 
+so we choose a set of input points, calculate the covariance, and
+then do the sampling. To reflect the length-scale, distance you have to move
+in input space before the function value can change significantly. 
+
+One can make predictions with noise free observations or with noise
+observations. The prior is often not informative enough to draw samples from,
+so training samples are used to get more information. The distribution
+of a joint gaussian is modelled from the training and test points
+via covariance between them.
