@@ -104,9 +104,12 @@ for all hypothesis classes $\mathcal{H}_n$. Applying the union bound over $n = 1
 we obtain this holds. 
 
 - TODO which union bound, how???
+- I believe the union bound refers to having a $n$ countable union of classes, 
+so simply apply it as indenpendent probabilities. 
 
-Second, define $n(h) = \min \{ n: h \in \mathcal{H}_n \}$, which concludes the 
-proof. 
+To make equation 7.3. more elegant, we introduce the minimal $n$ of which class 
+$h \in \mathcal{H}_n$ is from. 
+$n(h) = \min \{ n: h \in \mathcal{H}_n \}$
 
 SRM gets as input a training set, hypothesis classes with weights. 
 Outputs the hypothesis such that it minimizes the sample error in a weighted scheme. 

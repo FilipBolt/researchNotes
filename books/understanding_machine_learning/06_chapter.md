@@ -34,7 +34,7 @@ and set some $a_0 < a* < a_1$ such that the probability of
 getting x less or more than $a*$ is exactly $\epsilon$. Now, we 
 define a training set $S$, with bounds $b_0 \leq b_S (ERM) \leq b_1$.
 A sufficient condition for $L_D(h_S) \leq \epsilon$ is that
-both $b_0 \geq a_0$ and $b_1 leq a_1$. 
+both $b_0 \geq a_0$ and $b_1 \leq a_1$. 
 
 - TODO: question on clarity here (shouldn't the condition 
 be inverted ?)
