@@ -160,3 +160,50 @@ linear scoring model. Grammar for NER labels is provided
 in figure 2.8, it encodes all valid output structures
 
 ### 2.2.4 Graphs and hypergraphs
+
+Next, we define a graph $G$ with vertices $\mathcal{V}$ and directed edges $\mathcal{A}$.
+Also, define weights over edges as $w: \mathcal{A} \to \mathbb{R}$. Paths are
+consecutive pairs of edges for pairs $\langle v, v^{'} \rangle$ and
+$\langle v^{''}, v^{'''} \rangle$ such that $v^{'} = v^{''}$. Structure prediction 
+problems can be seen as picking a path through a graph. If edges define the path, 
+then decoding is finding the maximum scoring path:
+$$
+score(x, y) = \sum_{i=1}^{m} w(y_i)
+$$
+
+Finding the maximum path can be done using well-known graph algorithms
+(such as Dijkstra). **Hypergraphs** are more general than graphs. A **hyperarc (edge)**
+connects a set of source vertices to set of target vertices so that
+the set of hyperarcs $\mathcal{A} \subseteq 2^{\mathcal{V}} \times 2^{\mathcal{V}}$
+A simple path is a sequence of vertices such that for every consecutive pair of vertices
+there is some hyperarc $\langle \mathcal{V}, v' \rangle$ such that $v \in \mathcal{V}$. 
+A **hyperpath** from vertex $v_i \in \mathcal{V}$ to $v_f \in \mathcal{V}$ is a set of 
+vertices $\mathcal{V}' \subseteq \mathcal{V}$ and hyperarcs from $\mathcal{A}$, 
+each involving vertices from $\mathcal{V}'$. 
+
+### 2.2.5 Weighted Logic Programs
+
+A set of axioms represents "terms" or typed tuples, upon which inference rules are applied
+to deductively prove theorems (other terms). A theorem is inferred as a consequent from
+other theorems -- antecedents. 
+If $Proofs(t)$ is the set of proofs of theorem $t$ and $Axioms(y)$ is
+the bag of axioms used in proof $y$ then $t$ is true if at least one proof in $Proofs(t)$
+is valid. If we let axioms and theorems get values other than true or false, we 
+can construct weighted logical programs. 
+
+We define a set of axioms $\mathcal{A}$ and inference rules based on input $x$.
+Decoding is finding the maximum-weighted proof (best way to prove a goal). 
+
+Weighted logic programs, hypergrahps and parsing views can all be solved using
+dynamic programming.
+
+## 2.3 Dynamic Programming
+
+A dynamic program (DP) represents a decoding problem with optimal substructure
+(structure is usually recursive)
+and overlapping sub-problems (substructures are repetitive)
+
+### 2.3.1 Shortest or Minimum-Cost Path
+
+
+ 
