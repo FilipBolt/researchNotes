@@ -2,4 +2,3 @@
 
 ## 12.2. Convex Learning Problems
 
-
