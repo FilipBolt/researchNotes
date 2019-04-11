@@ -351,5 +351,3 @@ distribution is normalized using a partition function factor.
 ### 3.5.1 Logistic regression
 
 
-
-
