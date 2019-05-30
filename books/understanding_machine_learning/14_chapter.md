@@ -139,3 +139,44 @@ $$
 To derive the proof, we use that  
 $w_t$ depends on merely $v_{t-1}$ according to the update rule, therefore
 expectation is constant
+
+## 14.4 Variants
+
+### 14.4.1 Adding a projection step
+
+To ensure that weights modified during gradient descent always end up 
+within the bounds, that is each $w$ is $||w|| \leq B$, we add 
+a projection step to the GD algorithm. Thus we have a two step update
+rule: 
+
+$$ 
+w^{t + \frac{1}{2}} = w^t - \eta v_t
+$$
+$$
+w^{t + 1} = arg \min_{w \in \mathbb{H}} || w - w^{t + \frac{1}{2}}||
+$$
+
+This projection step replaces the gradiently descent weight with the nearest
+one in the allowed space. 
+
+## 14.5 Learning with SGD
+
+### 14.5.1 SGD for Risk Minimization 
+
+We wish to minimize the risk function $L_D(w) = \mathbb{E}_{z \sim D} [l(w, z)]$
+SGD minimizes $L_D(w)$ directly instead of minimizing $L_S(w)$. 
+With SGD we find an unbiased estimate of the gradient $\nabla L_D(w)$. 
+First, we consider differntiable functions. First, we sample $z \sim D$. 
+Then we define random vector $v_t$ to be the gradient of the function 
+$l(w, z)$ with respect w, at the point $w^t$. Then by linearity of the gradient
+
+$$
+\mathbb{E}[v_t | w_t]= \mathbb{E}_{z \sim D} [\nabla l (w^t, z)] = \nabla L_D(w)
+$$
+
+The same argument holds for nondifferentiable loss functions. 
+$v_t$ is a subgradient of $l(w, z)$ at $w^t$. Then for every $u$
+
+$$
+l(u, z) - l(w^t, z) \geq \langle u - w^t, v_t \rangle
+$$
