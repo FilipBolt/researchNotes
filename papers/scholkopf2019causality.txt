@@ -1,0 +1,43 @@
+scholkopf2019causality
+
+Causality for Machine Learning
+
+Paper by Bernhard Scholkopf
+
+
+
+
+# Definitions:
+
+## Common Cause Principle (CCP)
+if two observables X and Y are statistically dependent there exists a variable
+Z that causally explains both X and Y and makes them independent when conditioned
+on Z. 
+
+## Structural Causal Models (SCM)
+Given a set of observables (X_1, ... , X_n) associated in a directed graph setting (DAG), each
+observable is a result of assignment X_i = f_i (PA_i, U_i) where
+PA_i are parents and U_i is a noise (unexplained component) variable. 
+
+## Causal Markov condition
+Each X_j is conditionally independent of its non-descendants. 
+
+## Causal factorization
+p(X_1, ..., X_n) = \prod p(X_i | PA_i)
+
+## Independent Causal Mechanisms (ICM)
+The causal process is composed of autonomous models that do not influence each other. 
+
+
+Questions:
+
+- How and would a causally designed language model look like? Would such a model even make sense at all?
+- Why did replacing typical Parent-child relationships with its functional counterpart
+allow for mathematics to work in the context of causal modelling?
+- For the half-sibling problem, what does the DAG and the formulas (roughly) look like?
+- How exactly does causal modeling in the semi-supervised learning work?
+(if there is no dependence in the causal direction, there will be a positive dependence
+in the anticausal direction)
+
+
+
